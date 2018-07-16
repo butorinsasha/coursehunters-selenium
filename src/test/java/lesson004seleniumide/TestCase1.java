@@ -1,4 +1,4 @@
-package com.example.tests;
+package lesson004seleniumide;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestCase2 {
+public class TestCase1 {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -23,11 +23,15 @@ public class TestCase2 {
   }
 
   @Test
-  public void testCase2() throws Exception {
+  public void testCase1() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Download")).click();
-    driver.findElement(By.linkText("Maven Information")).click();
-    assertEquals("Maven Information", driver.getTitle());
+    driver.findElement(By.linkText("Documentation")).click();
+    driver.findElement(By.linkText("Introduction")).click();
+    try {
+      assertEquals("Introduction — Selenium Documentation", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
   }
 
   @After

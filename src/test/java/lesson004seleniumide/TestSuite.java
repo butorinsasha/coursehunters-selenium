@@ -1,3 +1,5 @@
+package lesson004seleniumide;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
