@@ -1,5 +1,3 @@
-package lesson004seleniumide;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -9,6 +7,7 @@ public class TestSuite {
     TestSuite suite = new TestSuite();
     suite.addTestSuite(tc1.class);
     suite.addTestSuite(tc2.class);
+    suite.addTestSuite(tc3.class);
     return suite;
   }
 

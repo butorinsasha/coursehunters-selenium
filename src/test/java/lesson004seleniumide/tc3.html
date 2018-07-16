@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="https://www.seleniumhq.org/" />
-<title>tc2</title>
+<link rel="selenium.base" href="https://automationjourney.com/" />
+<title>tc3</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">tc2</td></tr>
+<tr><td rowspan="1" colspan="3">tc3</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -18,19 +18,35 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Download</td>
+	<td>link=Contact</td>
 	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=g3-name</td>
+	<td>Aleksandr Butorin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=g3-email</td>
+	<td>butorinsasha@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=contact-form-comment-g3-comment</td>
+	<td>Just testing. Sorry...</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Maven Information</td>
+	<td>css=input.pushbutton-wide</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertTitle</td>
-	<td>Maven Information</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>css=h3</td>
+	<td>Message Sent (go back)</td>
 </tr>
+
 </tbody></table>
 </body>
 </html>
