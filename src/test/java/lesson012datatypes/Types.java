@@ -1,4 +1,4 @@
-package lesson12datatypes;
+package lesson012datatypes;
 
 public class Types {
     public static void main(String[] args) {
