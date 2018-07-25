@@ -20,6 +20,12 @@ public class MethodsTest {
         String gst = "guest";
         sayHello(gst);
         showSumToPerson("sasha", 15, 11, 33);
+<<<<<<< HEAD
+=======
+
+        boolean result = showSum(1, 22, 333);
+        System.out.println(result);
+>>>>>>> 64ed424a1baf9582d6aeb988f20e9cb417d97547
     }
 
     static int getSum(int x, int y) {
@@ -28,9 +34,16 @@ public class MethodsTest {
         return sum;
     }
 
+<<<<<<< HEAD
     static void showSum(int x, int y, int z) {
         int sum = x + y +z;
         System.out.println("Sum is: " + sum);
+=======
+    static boolean showSum(int x, int y, int z) {
+        int sum = x + y +z;
+        System.out.println("Sum is: " + sum);
+        return true;
+>>>>>>> 64ed424a1baf9582d6aeb988f20e9cb417d97547
     }
 
     static void saySmth() {
