@@ -1,6 +1,17 @@
-package lesson26constuctors;
+package lesson27staticandfinalmodifiers;
 
 public class Car {
+
+    /*Static variable belongs to the class itself and is sole for the every object of this class and can be gotten without instantiating*/
+    /*Final variable cannot be overridden*/
+    final static int staticVar = 10;
+
+    /*Static method belongs to the class itself and can be invoked without instantiating*/
+    /*fianal method cannot be overridden*/
+    final static void staticMethod() {
+        System.out.println("This is staticMethod");
+    }
+
     int height;
     int width;
     int length;

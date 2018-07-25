@@ -1,6 +1,6 @@
 package lesson025classesandobjects;
 
-public class Car {
+class Car {
     int height;
     int width;
     int length;
