@@ -1,4 +1,4 @@
-package lesson26constuctors;
+package lesson026constuctors;
 
 public class CarTest {
     public static void main(String[] args) {
