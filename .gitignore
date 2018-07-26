@@ -34,3 +34,6 @@ target/
 
 # Videos
 video/
+
+# Drivers
+drivers/
