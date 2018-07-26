@@ -1,4 +1,4 @@
-package lesson029oopencapsulation.zoo;
+package lesson030ooppolymorphism.zoo;
 
 public class Dog extends Animal {
 
