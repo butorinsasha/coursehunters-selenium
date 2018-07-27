@@ -17,24 +17,32 @@ public class FirstSeleniumTest {
 
 
         /* *** Windows *** */
+        /*chrome*/
 //        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\drivers\\chromedriver.exe");
 //        System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
 
-
+        /*firefox*/
 //        System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\drivers\\geckodriver.exe");
 //        System.setProperty("webdriver.gecko.driver", ".\\drivers\\geckodriver.exe");
 
-        /*Use this to define the Firefox version you want to use.
-        Most of the issue I have faced trying Selenium is around version issues, with no clear messages or info on which versions are compatible.*/
+        /*
+        Use this to define the Firefox version you want to use.
+        Most of the issue I have faced trying Selenium is around version issues, with no clear messages or info on which versions are compatible.
+        (works only if system property webdriver.gecko.driver is set manually in code)
+        */
 //        System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
 
 
 
         /* *** Linux *** */
-//        System.setProperty("webdriver.chrome.driver", "/opt/drivers/chromedriver");
-        System.setProperty("webdriver.gecko.driver", "/opt/drivers/geckodriver");
+        /*chrome*/
+//        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver"); // to add into the $PATH locate drivers into the /usr/bin
+//        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+//        System.setProperty("webdriver.chrome.bin", "/usr/bin/google-chrome");
 
-        System.setProperty("webdriver.firefox.bin", "/opt/firefox/firefox"); // Need a custom instalation: tar jxf firefox*.tar.bz2 -C /opt
+        /*firefox*/
+//        System.setProperty("webdriver.gecko.driver", "/usr/bin/chromedriver"); // to add into the $PATH use locade drivers into the /usr/bin
+//        System.setProperty("webdriver.firefox.bin", "/usr/bin/firefox"); // Need a custom installation: tar jxf firefox*.tar.bz2 -C /opt
 
 
 
