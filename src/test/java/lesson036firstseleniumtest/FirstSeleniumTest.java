@@ -12,7 +12,7 @@ public class FirstSeleniumTest {
     @Before
     public void setUp(){
 
-        // System.setProperty("webdriver.chrome.driver", "C:\\Users\\butorin\\Documents\\work\\qa\\coursehunters-selenium\\drivers\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\butorin\\Documents\\work\\qa\\coursehunters-selenium\\drivers\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
 //        System.setProperty("webdriver.chrome.driver", "C:\\Users\\butorin\\Documents\\work\\qa\\coursehunters-selenium\\drivers\\chromedriver.exe");
 //        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
