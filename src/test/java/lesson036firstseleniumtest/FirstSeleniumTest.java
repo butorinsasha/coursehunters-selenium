@@ -16,9 +16,11 @@ public class FirstSeleniumTest {
     public void setUp(){
 
 
-        /*Windows*/
+        /* *** Windows *** */
 //        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\drivers\\chromedriver.exe");
 //        System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
+
+
 //        System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\drivers\\geckodriver.exe");
 //        System.setProperty("webdriver.gecko.driver", ".\\drivers\\geckodriver.exe");
 
@@ -28,13 +30,16 @@ public class FirstSeleniumTest {
 
 
 
-        /*Linux*/
-//        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
-//        System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver");
+        /* *** Linux *** */
+//        System.setProperty("webdriver.chrome.driver", "/opt/drivers/chromedriver");
+        System.setProperty("webdriver.gecko.driver", "/opt/drivers/geckodriver");
+
+        System.setProperty("webdriver.firefox.bin", "/opt/firefox/firefox"); // Need a custom instalation: tar jxf firefox*.tar.bz2 -C /opt
 
 
 
-        driver = new ChromeDriver();
+//        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.get("https://www.seleniumhq.org/");
     }
 
