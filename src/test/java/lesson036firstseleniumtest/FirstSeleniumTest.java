@@ -36,7 +36,7 @@ public class FirstSeleniumTest {
 
         /* *** Linux *** */
         /*chrome*/
-//        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver"); // to add into the $PATH locate drivers into the /usr/bin
+//        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver"); // to add into the $PATH locate drivers into the /usr/bin and make them executable: chmod 777 chromedirver geckodriver
 //        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 //        System.setProperty("webdriver.chrome.bin", "/usr/bin/google-chrome");
 
