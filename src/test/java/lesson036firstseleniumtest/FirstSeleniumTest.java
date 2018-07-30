@@ -46,8 +46,8 @@ public class FirstSeleniumTest {
 
 
 
-//        driver = new ChromeDriver();
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+//        driver = new FirefoxDriver();
         driver.get("https://www.seleniumhq.org/");
     }
 
