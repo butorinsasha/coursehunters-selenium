@@ -29,14 +29,19 @@ public class FindElementTest {
     public void findElementByDifferentWays() {
         driver.get("https://en.wikipedia.org"); //same as driver.navigate.to()
         System.out.println(driver.getCurrentUrl());
-        WebElement loginLink = driver.findElement(By.linkText("Log in"));
+        WebElement loginLinkFoundByLinkText = driver.findElement(By.linkText("Log in"));
+//        WebElement loginLinkFoundByXPath = driver.findElement(By.xpath("//*[@id=\"pt-login\"]/a")); // Google Chrome generated XPath
+        WebElement loginLinkFoundByXPath = driver.findElement(By.xpath("//*[text()=\"Log in\"]")); // my XPath
+        Assert.assertEquals(loginLinkFoundByLinkText, loginLinkFoundByXPath);
+        Assert.assertTrue(loginLinkFoundByLinkText.equals(loginLinkFoundByXPath));
+
         WebElement donateLink = driver.findElement(By.partialLinkText("Donate"));
         WebElement searchInput = driver.findElement(By.name("search"));
         WebElement searchButton = driver.findElement(By.className("searchButton"));
         WebElement byId = driver.findElement(By.id("ca-viewsource"));
         WebElement byTagName = driver.findElement(By.tagName("input")); // returns first <input> tag
         WebElement byCssSelector = driver.findElement(By.cssSelector("div#p-namespaces > h3"));
-        WebElement byXpath= driver.findElement(By.xpath("//div[@id=\"mw-panel\"]/div[@id=\"p-logo\"]"));
+        WebElement byXPath= driver.findElement(By.xpath("//div[@id=\"mw-panel\"]/div[@id=\"p-logo\"]"));
     }
 
     @After
