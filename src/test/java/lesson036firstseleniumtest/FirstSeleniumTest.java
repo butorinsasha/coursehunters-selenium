@@ -57,11 +57,18 @@ public class FirstSeleniumTest {
         Assert.assertEquals("Downloads", driver.getTitle());
     }
 
-    /*intended to fail*/
+    @Ignore("Ignored by design")
     @Test
     public void projectsPageHasRightTitle(){
         driver.findElement(By.id("menu_projects")).click();
-        Assert.assertEquals("Projects", driver.getTitle()); // it is actually "Selenium Projects"
+        Assert.assertEquals("Selenium Projects", driver.getTitle());
+    }
+
+    /*Intended to fail*/
+    @Test
+    public void aboutPageHasRightTitle(){
+        driver.findElement(By.id("menu_about")).click();
+        Assert.assertEquals("About", driver.getTitle()); // it is actually "About Selenium"
     }
 
     @After
