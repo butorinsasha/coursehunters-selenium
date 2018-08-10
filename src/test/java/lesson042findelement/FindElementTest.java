@@ -29,20 +29,14 @@ public class FindElementTest {
     public void findElementByDifferentWays() {
         driver.get("https://en.wikipedia.org"); //same as driver.navigate.to()
         System.out.println(driver.getCurrentUrl());
-        WebElement link1 = driver.findElement(By.linkText("Log in"));
-        WebElement link2 = driver.findElement(By.partialLinkText("Donate"));
-
-
-//        System.out.println(driver.getCurrentUrl());
-//        driver.navigate().to("https://www.wikipedia.org/");  // same as driver.get()
-//        driver.navigate().back();
-//        driver.navigate().forward();
-//        driver.navigate().refresh();
-//        System.out.println(driver.getTitle());
-//        System.out.println(driver.getCurrentUrl());
-//        Assert.assertEquals("Wikipedia", driver.getTitle());
-//        Assert.assertEquals("https://www.wikipedia.org/", driver.getCurrentUrl());
-//        Assert.assertTrue(driver.getCurrentUrl().contains("wikipedia.org"));
+        WebElement loginLink = driver.findElement(By.linkText("Log in"));
+        WebElement donateLink = driver.findElement(By.partialLinkText("Donate"));
+        WebElement searchInput = driver.findElement(By.name("search"));
+        WebElement searchButton = driver.findElement(By.className("searchButton"));
+        WebElement byId = driver.findElement(By.id("ca-viewsource"));
+        WebElement byTagName = driver.findElement(By.tagName("input")); // returns first <input> tag
+        WebElement byCssSelector = driver.findElement(By.cssSelector("div#p-namespaces > h3"));
+        WebElement byXpath= driver.findElement(By.xpath("//div[@id=\"mw-panel\"]/div[@id=\"p-logo\"]"));
     }
 
     @After
