@@ -52,9 +52,9 @@ public class TextFieldsTest {
     }
 
 
-   /* @After
+    @After
     public void tearDown() {
         driver.quit();
-    }*/
+    }
 
 }
