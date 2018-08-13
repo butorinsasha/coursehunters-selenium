@@ -23,7 +23,7 @@ public class LinksTest {
     }
 
     @Test
-    public void fillTextFileds() {
+    public void fillTextFields() {
         driver.get("https://en.wikipedia.org");
         WebElement link = driver.findElement(By.xpath("//li[@id=\"n-aboutsite\"]/a"));
         System.out.println(link.getText());
@@ -39,9 +39,9 @@ public class LinksTest {
         Assert.assertEquals("Forgotten Password | Can't Log In | Facebook", driver.getTitle());
     }
 
-    /*@After
-    public void tearDown() {
-        driver.quit();
-    }*/
+//    @After
+//    public void tearDown() {
+//        driver.quit();
+//    }
 
 }
