@@ -34,7 +34,6 @@ public class CheckBoxesTest {
     @Before
     public void setUp() {
         driver = new ChromeDriver();
-//        driver = new FirefoxDriver();
 
         driver.manage().window().setPosition(new Point(0,0));
 
