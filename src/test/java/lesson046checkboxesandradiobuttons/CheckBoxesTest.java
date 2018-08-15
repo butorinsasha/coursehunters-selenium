@@ -37,7 +37,7 @@ public class CheckBoxesTest {
 
         driver.manage().window().setPosition(new Point(0,0));
 
-        driver.manage().window().setSize(new Dimension(960, 1080));
+        driver.manage().window().setSize(new Dimension(960, 1040));
 //        driver.manage().window().setSize(new Dimension(800, 900));
 //        driver.manage().window().maximize();
 
