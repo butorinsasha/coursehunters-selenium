@@ -31,7 +31,8 @@ public class FindElementsTest {
 
         String checkboxesXpath = "//fieldset[@data-autotest-id=\"7893318\"]//span[@class=\"NVoaOvqe58\"]";
         List<WebElement> checkboxes = driver.findElements(By.xpath(checkboxesXpath));
-        //        checkboxes.get(3).click();
+        checkboxes.get(3).click(); // !? How do we can access get() method without defining an implementation of List interface !?
+        System.out.println(checkboxes.getClass());
         Assert.assertEquals(12, checkboxes.size());
 
         // Random ticking of the checkboxes
