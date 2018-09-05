@@ -25,7 +25,7 @@ public class RadioButtonTest {
 //        driver.manage().window().setSize(new Dimension(800, 900));
 //        driver.manage().window().maximize();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Maximum period of time driver will wait until it finds specific WebElement
 
     }
 
