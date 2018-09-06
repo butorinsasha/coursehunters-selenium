@@ -21,11 +21,12 @@ public class RadioButtonTest {
 
         driver.manage().window().setPosition(new Point(0,0));
 
-        driver.manage().window().setSize(new Dimension(960, 1080));
+        driver.manage().window().setSize(new Dimension(960, 1040));
+
 //        driver.manage().window().setSize(new Dimension(800, 900));
 //        driver.manage().window().maximize();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Maximum period of time driver will wait until it finds specific WebElement
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Maximum period of time driver will wait until it finds specific WebElement
 
     }
 
@@ -37,14 +38,14 @@ public class RadioButtonTest {
         driver.findElement(By.xpath("//a[text()=\"Бытовая техника\"]")).click();
         driver.findElement(By.xpath("//a[text()=\"Стиральные машины\"]")).click();
 
-        driver.findElement(By.xpath("//fieldset[@data-reactid=\"568\"]//span[text()=\"С доставкой\"]")).click();
-        driver.findElement(By.xpath("//fieldset[@data-reactid=\"568\"]//span[text()=\"Самовывоз\"]")).click();
-        driver.findElement(By.xpath("//fieldset[@data-reactid=\"568\"]//span[text()=\"Любой\"]")).click();
+        driver.findElement(By.xpath("//span[text()=\"С доставкой\"]")).click();
+        driver.findElement(By.xpath("//span[text()=\"Самовывоз\"]")).click();
+        driver.findElement(By.xpath("//span[text()=\"Любой\"]")).click();
 
     }
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }
