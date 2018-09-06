@@ -72,6 +72,10 @@ public class ExplicitWaitTest {
         for (int i = 0; i < 13; i++) {
             monthOptionsXpaths.add(monthListXpath + "//option[@value=\"" + i + "\"]");
         }
+        for (String monthOptionsXpath : monthOptionsXpaths) {
+            System.out.println(monthOptionsXpath);
+        }
+
 
         List<WebElement> monthOptions = new ArrayList<>();
 

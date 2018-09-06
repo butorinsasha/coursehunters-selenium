@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FirstSeleniumTest {
 
 //    WebDriver driver = new ChromeDriver();
-    private WebDriver driver;
+    WebDriver driver;
 
 
     @Before
