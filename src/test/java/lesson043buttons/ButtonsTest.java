@@ -40,7 +40,7 @@ public class ButtonsTest {
 
 
         driver.navigate().to("https://www.facebook.com/");
-        driver.findElement(By.xpath("//label[@id=\"loginbutton\"]//input")).submit();
+        driver.findElement(By.xpath("//label[@id=\"loginbutton\"]//input")).submit(); // public abstract void submit(): If this current element is a form, or an element within a form, then this will be submitted to the remote server.
     }
 
     @After

@@ -39,9 +39,9 @@ public class LinksTest {
         Assert.assertEquals("Forgotten Password | Can't Log In | Facebook", driver.getTitle());
     }
 
-//    @After
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 
 }

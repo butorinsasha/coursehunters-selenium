@@ -41,6 +41,7 @@ public class ActionsTest {
 
         actions.moveToElement(link1).build().perform();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title=\"Электроника - iPhone\"]")));
+
 //        Thread.sleep(1000);
 
 //        actions.moveToElement(link2).build().perform();
@@ -71,6 +72,6 @@ public class ActionsTest {
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }
