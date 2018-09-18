@@ -50,7 +50,22 @@ public class AlertTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         driver.switchTo().alert().accept();
+    }
+
+    @Test
+    public void testDismissAlert() {
+        driver.get("http://google.com");
+        jse.executeScript("confirm('Are you sure');");
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.switchTo().alert().dismiss();
     }
 
     @After
