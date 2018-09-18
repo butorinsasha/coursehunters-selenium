@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
 
-public class WindowTest {
+public class WindowsTest {
 
     WebDriver driver;
     JavascriptExecutor jse;
