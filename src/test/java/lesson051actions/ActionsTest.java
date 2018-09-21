@@ -39,6 +39,7 @@ public class ActionsTest {
         WebElement link1 = driver.findElement(By.xpath("//tr[@role=\"list\"]//a[text()=\"Электроника\"]"));
         WebElement link2 = driver.findElement(By.xpath("//a[@title=\"Электроника - iPhone\"]"));
 
+
         actions.moveToElement(link1).build().perform();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title=\"Электроника - iPhone\"]")));
 
