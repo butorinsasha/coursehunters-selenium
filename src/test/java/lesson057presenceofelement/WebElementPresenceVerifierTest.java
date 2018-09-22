@@ -33,15 +33,18 @@ public class WebElementPresenceVerifierTest {
         String aSigninXpath = "//a[text()=\"Sign in\"]";
         String aLoginXpath = "//a[text()=\"Login in\"]";
 
-        boolean isPresent;
+//        boolean isPresent;
+//
+//        isPresent = driver.findElements(By.xpath(aSigninXpath)).size() > 0;
+//        System.out.println(isPresent);
+//        Assert.assertTrue(isPresent);
+//
+//        isPresent = driver.findElements(By.xpath(aLoginXpath)).size() > 0;
+//        System.out.println(isPresent);
+//        Assert.assertFalse(isPresent);
 
-        isPresent = driver.findElements(By.xpath(aSigninXpath)).size() > 0;
-        System.out.println(isPresent);
-        Assert.assertTrue(isPresent);
-
-        isPresent = driver.findElements(By.xpath(aLoginXpath)).size() > 0;
-        System.out.println(isPresent);
-        Assert.assertFalse(isPresent);
+        Assert.assertTrue(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, aSigninXpath));
+        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, aLoginXpath));
 
     }
 
