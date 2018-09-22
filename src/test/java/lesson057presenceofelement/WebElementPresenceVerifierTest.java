@@ -21,6 +21,8 @@ public class WebElementPresenceVerifierTest {
     @Before
     public void setUp() throws Exception {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
         wait = new WebDriverWait(driver, 5);
         jse = (JavascriptExecutor) driver;
         actions = new Actions(driver);
@@ -28,23 +30,30 @@ public class WebElementPresenceVerifierTest {
 
     @Test
     public void testPresenceOfElementByFindElementsSizeListIsGreaterThanZero() {
-        driver.navigate().to("https://github.com/");
+        driver.get("https://github.com/");
 
-        String aSigninXpath = "//a[text()=\"Sign in\"]";
-        String aLoginXpath = "//a[text()=\"Login in\"]";
+        String signInXpath = "//a[text()=\"Sign in\"]";
+        String logInXpath = "//a[text()=\"Login in\"]";
 
 //        boolean isPresent;
 //
-//        isPresent = driver.findElements(By.xpath(aSigninXpath)).size() > 0;
+//        isPresent = driver.findElements(By.xpath(signInXpath)).size() > 0;
 //        System.out.println(isPresent);
 //        Assert.assertTrue(isPresent);
 //
-//        isPresent = driver.findElements(By.xpath(aLoginXpath)).size() > 0;
+//        isPresent = driver.findElements(By.xpath(logInXpath)).size() > 0;
 //        System.out.println(isPresent);
 //        Assert.assertFalse(isPresent);
 
-        Assert.assertTrue(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, aSigninXpath));
-        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, aLoginXpath));
+        boolean isPresent;
+
+        isPresent = WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(signInXpath));
+        System.out.println(isPresent);
+        Assert.assertTrue(isPresent);
+
+        isPresent =  WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(logInXpath));
+        System.out.println(isPresent);
+        Assert.assertFalse(isPresent);
 
     }
 
@@ -53,15 +62,36 @@ public class WebElementPresenceVerifierTest {
     public void testPresenceOfElementByNoSuchElementExceptionHandling() {
         driver.get("https://github.com/");
 
-        String aSigninXpath = "//a[text()=\"Sign in\"]";
-        String aLoginXpath = "//a[text()=\"Login in\"]";
+        String signInXpath = "//a[text()=\"Sign in\"]";
+        String logInXpath = "//a[text()=\"Login in\"]";
 
+        boolean isPresent;
 
+        isPresent = WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(signInXpath));
+        System.out.println(isPresent);
+        Assert.assertTrue(isPresent);
+
+        isPresent =  WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(logInXpath));
+        System.out.println(isPresent);
+        Assert.assertFalse(isPresent);
     }
 
     @Test
     public void testPresenceOfElementByPresenceOfElementLocated() {
+        driver.get("https://github.com/");
 
+        String signInXpath = "//a[text()=\"Sign in\"]";
+        String logInXpath = "//a[text()=\"Login in\"]";
+
+        boolean isPresent;
+
+        isPresent = WebElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver,wait, By.xpath(signInXpath));
+        System.out.println(isPresent);
+        Assert.assertTrue(isPresent);
+
+        isPresent =  WebElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver, wait, By.xpath(logInXpath));
+        System.out.println(isPresent);
+        Assert.assertFalse(isPresent);
     }
 
     @After
