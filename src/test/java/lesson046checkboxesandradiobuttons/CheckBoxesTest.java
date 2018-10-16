@@ -63,8 +63,19 @@ public class CheckBoxesTest {
 
     }
 
+    @Test
+    public void selectCheckBoxes2() {
+        driver.get("http://nativeformelements.com/");
+        WebElement checkBox1 = driver.findElement(By.xpath("//*[@id=\"container\"]/section/ul[10]/li[1]/input"));
+        Assert.assertFalse(checkBox1.isSelected());
+        checkBox1.click();
+        Assert.assertFalse(checkBox1.isSelected());
+        if (checkBox1.isSelected()) checkBox1.click();
+        Assert.assertFalse(checkBox1.isSelected());
+    }
+
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+//        driver.quit();
     }
 }

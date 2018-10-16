@@ -34,8 +34,8 @@ public class Table {
         List<WebElement> rows = getRows();
         List<List<WebElement>> rowsWithColumns = new ArrayList<>();
         for (WebElement row : rows) {
-            List<WebElement> rowWithColumns = row.findElements(By.xpath(".//td"));
-            rowsWithColumns.add(rowWithColumns);
+            List<WebElement> cellsOfRow = row.findElements(By.xpath(".//td"));
+            rowsWithColumns.add(cellsOfRow);
         }
         return rowsWithColumns;
     }
@@ -48,7 +48,7 @@ public class Table {
 
     public List<Map<String, WebElement>> getRowsWithColumnsByHeaders() {
         List<List<WebElement>> rowsWithColumns = getRowsWithColumns();
-        List<Map<String, WebElement>> rowsWithColumnsByHeaders = new ArrayList<Map<String, WebElement>>();
+        List<Map<String, WebElement>> rowsWithColumnsByHeaders = new ArrayList<>();
         Map<String, WebElement> rowByHeaders;
         List<WebElement> headers = getHeaders();
 

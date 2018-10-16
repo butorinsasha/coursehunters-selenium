@@ -23,16 +23,16 @@ public class LinksTest {
     }
 
     @Test
-    public void fillTextFields() {
+    public void linksClickTest() {
         driver.get("https://en.wikipedia.org");
         WebElement link = driver.findElement(By.xpath("//li[@id=\"n-aboutsite\"]/a"));
         System.out.println(link.getText());
         link.click();
 
         driver.get("https://github.com/");
-        driver.findElement(By.xpath("//a[text()=\"Personal\"]")).click();
+        driver.findElement(By.xpath("//a[text()=\"About\"]")).click();
         System.out.println();
-        Assert.assertTrue(driver.getCurrentUrl().contains("github.com/personal"));
+        Assert.assertTrue(driver.getCurrentUrl().contains("github.com/about"));
 
         driver.get("https://www.facebook.com/");
         driver.findElement(By.xpath("//a[text()=\"Forgotten account?\"]")).click();

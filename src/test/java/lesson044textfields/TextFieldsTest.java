@@ -40,15 +40,19 @@ public class TextFieldsTest {
 
         driver.navigate().to("https://www.facebook.com/");
 
-        String email = "butorinsasha@gmail.com";
-        String pass = "t3stpA55";
+        String wrongEmail = "butorinsasha@gmail.ru";
+        String correctEmail = "butorinsasha@gmail.com";
+        String wrongPass = "qweASD123";
 
-        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(email);
-        driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys(pass);
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(wrongEmail);
+        driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys(wrongPass);
         driver.findElement(By.xpath("//label[@id=\"loginbutton\"]//input")).submit();
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).clear();
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(correctEmail);
         System.out.println("Email is: " + driver.findElement(By.xpath("//*[@id=\"email\"]")).getAttribute("value"));
-        Assert.assertEquals(email, driver.findElement(By.xpath("//*[@id=\"email\"]")).getAttribute("value"));
+        Assert.assertEquals(correctEmail, driver.findElement(By.xpath("//*[@id=\"email\"]")).getAttribute("value"));
         Assert.assertEquals("", driver.findElement(By.xpath("//*[@id=\"pass\"]")).getAttribute("value"));
+        Assert.assertEquals("Sign up for Facebook", driver.findElement(By.xpath("//a[@id=\"reg-link\"]")).getText());
     }
 
 
