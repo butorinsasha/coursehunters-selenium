@@ -26,7 +26,7 @@ public class ExplicitWaitTest {
 //        driver.manage().window().setSize(new Dimension(800, 900));
 //        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // Maximum period of time driver will wait until it finds specific WebElement
 
-        wait = (new WebDriverWait(driver, 5));
+        wait = new WebDriverWait(driver, 5);
     }
 
 //    public void selectOptionFromList(String listId, String option) {
