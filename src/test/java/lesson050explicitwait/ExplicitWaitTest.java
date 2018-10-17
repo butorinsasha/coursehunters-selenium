@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,7 +62,12 @@ public class ExplicitWaitTest {
     public void testExplicitWaitAtFacebookRegistrationPage() throws InterruptedException {
         driver.get("https://www.facebook.com/r.php");
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(text(), \"Create a new account\")]")));
+        String createNewAccountTitleEnXpath = "//div[contains(text(), \"Create a new account\")]";
+
+        WebElement createNewAccountTitle = driver.findElement(By.xpath(createNewAccountTitleEnXpath));
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(createNewAccountTitleEnXpath)));
+
 
         String monthListXpath = "//select[@name=\"birthday_month\" and @id=\"month\"]";
         WebElement monthList = driver.findElement(By.xpath(monthListXpath));
@@ -83,15 +89,41 @@ public class ExplicitWaitTest {
             monthOptions.add(driver.findElement(By.xpath(monthOptionsXpaths.get(i))));
         }
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(2)))); //it's already on the page after it loads. bad example to test explicit wait
         monthList.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(2))));
         monthOptions.get(2).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(2))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(2)))); //it's already on the page after it loads. bad example to test explicit wait
 
         monthList.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(5))));
         monthOptions.get(5).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(5))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(monthOptionsXpaths.get(5)))); //it's already on the page after it loads. bad example to test explicit wait
+    }
+
+    @Test
+    public void testExplicitWaitWhenLoadingSelectYouLanguagePane() {
+        driver.get("https://www.facebook.com/r.php");
+
+        String createNewAccountTitleEnXpath = "//div[contains(text(), \"Create a new account\")]";
+        String createNewAccountTitleRuXpath = "//div[contains(text(), \"Создать новый аккаунт\")]";
+        String russianLanguageSelectXpath = "//div[@id=\"language_container\"]//a[text()=\"Русский\"]";
+        String moreLanguageButtonXpath = "//a[@role=\"button\" and @class=\"_42ft _4jy0 _517i _517h _51sy\"]";
+        String languagesPaneXpath = "//div[@class=\"_t\"]";
+
+        WebElement createNewAccountTitleEn = driver.findElement(By.xpath(createNewAccountTitleEnXpath));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(moreLanguageButtonXpath)));
+        WebElement moreLanguageButton = driver.findElement(By.xpath(moreLanguageButtonXpath));
+        moreLanguageButton.click();
+
+        /*Wait is necessarily needed to wait until languagePane is loaded otherwise NoSuchElementException is thrown*/
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(languagesPaneXpath)));
+
+
+        WebElement russianLanguageSelect = driver.findElement(By.xpath(russianLanguageSelectXpath));
+        russianLanguageSelect.click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(createNewAccountTitleRuXpath)));
+//        WebElement createNewAccountTitleRu = driver.findElement(By.xpath(createNewAccountTitleRuXpath));
     }
 
     @After
