@@ -23,8 +23,9 @@ public class KeysTest {
     public void keysTest() {
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
         WebElement searchInput = driver.findElement(By.xpath("//input[@id=\"searchInput\"]"));
-
-        searchInput.sendKeys("Selenium");
+        searchInput.sendKeys(Keys.ENTER);
+        searchInput = driver.findElement(By.xpath("//input[@id=\"searchInput\"]"));
+        searchInput.sendKeys(Keys.SHIFT, "Selenium");
 //        searchInput.sendKeys(Keys.ENTER);
 
 //        searchInput.sendKeys(Keys.chord(Keys.SHIFT, "Selenium"));

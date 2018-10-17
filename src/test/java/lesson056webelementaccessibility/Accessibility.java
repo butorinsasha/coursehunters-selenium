@@ -22,6 +22,8 @@ public class Accessibility {
     @Before
     public void setUp() throws Exception {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
         jse = (JavascriptExecutor)driver;
         actions = new Actions(driver);
         wait = new WebDriverWait(driver, 5);
@@ -35,8 +37,18 @@ public class Accessibility {
         WebElement button1 = driver.findElement(By.xpath("//*[@id=\"container\"]/section/ul[19]/li[1]/button"));
         WebElement button2 = driver.findElement(By.xpath("//*[@id=\"container\"]/section/ul[19]/li[2]/button"));
 
-        System.out.println(button1.isEnabled());
-        System.out.println(button2.isEnabled());
+        System.out.println("button1.isEnabled() = " + button1.isEnabled());
+        System.out.println("button1.isEnabled() = " + button2.isEnabled());
+
+        System.out.println();
+
+        System.out.println("button1.isSelected() = " + button1.isSelected());
+        System.out.println("button1.isSelected() = " + button2.isSelected());
+
+        System.out.println();
+
+        System.out.println("button1.isDisplayed() = " + button1.isDisplayed());
+        System.out.println("button1.isDisplayed() = " + button2.isDisplayed());
 
         if (button1.isEnabled()) button1.click();
         if (button2.isEnabled()) button2.click();
@@ -70,12 +82,12 @@ public class Accessibility {
     public void testWebElemntIsDisplayed() {
         driver.get("https://www.ebay.com");
 
-        WebElement link1 = driver.findElement(By.xpath("//tr[@role=\"list\"]//a[text()=\"Электроника\"]"));
-        WebElement link2 = driver.findElement(By.xpath("//a[contains(text(), \"Бытовая электроника\")]"));
-        WebElement link3 = driver.findElement(By.xpath("//a[contains(text(), \"Подписки\")]"));
+        WebElement link1 = driver.findElement(By.xpath("//ul[@class=\"hl-cat-nav__container\"]//li/a[text()=\"Электроника\"]"));
+        WebElement link2 = driver.findElement(By.xpath("//a[contains(text(), \"iPhone\")]"));
+        WebElement link3 = driver.findElement(By.xpath("//ul[@class=\"hl-cat-nav__container\"]//li/a[text()=\"Скидки\"]"));
 
         actions.moveToElement(link1).build().perform();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), \"Бытовая электроника\")]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), \"iPhone\")]")));
 
 //        try {
 //            Thread.sleep(5000);
@@ -83,14 +95,14 @@ public class Accessibility {
 //            e.printStackTrace();
 //        }
 
-        if (link2.isDisplayed()) link2.click();
+        if (!link2.isDisplayed()) link2.click();
         else link3.click();
     }
 
 
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+//        driver.quit();
     }
 
 }

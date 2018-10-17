@@ -40,7 +40,7 @@ public class AlertTest {
         driver.navigate().to("https://google.com");
         driver.get("http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html");
 
-        WebElement link = driver.findElement(By.xpath("//a[text()=\"jdk-8u181-windows-x64.exe\"]"));
+        WebElement link = driver.findElement(By.xpath("//a[contains(text(), \"windows-x64\")]"));
 //        link.click();
         Action act = actions.click(link).build();
         act.perform();
@@ -51,7 +51,9 @@ public class AlertTest {
             e.printStackTrace();
         }
 
-        driver.switchTo().alert().accept();
+//        driver.switchTo().alert().accept();
+        driver.switchTo().alert().dismiss(); // also works
+
     }
 
     @Test

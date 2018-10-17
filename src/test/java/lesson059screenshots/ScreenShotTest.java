@@ -1,14 +1,13 @@
 package lesson059screenshots;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils; //this is needed to be imported
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 
 public class ScreenShotTest {
@@ -33,20 +32,27 @@ public class ScreenShotTest {
 
         /*Capturing as BASE64*/
         String base64 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
-        System.out.println(base64);
+        File scrBase64 = new File("target/test-classes/lesson059screenshots/screenshots/screenshot_" + FileName.dateTimeFileName(FileName.DATE_PATTERN_001) + ".base64");
 
         try {
             FileUtils.copyFile(scrFile, new File("target/test-classes/lesson059screenshots/screenshots/screenshot_" + FileName.dateTimeFileName(FileName.DATE_PATTERN_001) + ".png"));
             FileUtils.copyFile(scrFile, new File("target/test-classes/lesson059screenshots/screenshots/screenshot_" + FileName.epochFileName() + ".png"));
 
-            Date now = new Date(System.currentTimeMillis());
-            System.out.println(now.toString());
+//            FileUtils.copyFile(scrBase64, new File("target/test-classes/lesson059screenshots/screenshots/screenshot_" + FileName.dateTimeFileName(FileName.DATE_PATTERN_001) + ".base64"));
 
+            PrintWriter print = new PrintWriter(
+                    new BufferedWriter(
+                            new FileWriter(scrBase64)));
+            print.println(base64);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        /*Just wait for a while  secs after all instructions of test is done*/
+        Date now = new Date(System.currentTimeMillis());
+        System.out.println(now.toString());
+        System.out.println(base64);
+
+        /*Just wait for a while after all instructions of test is done*/
         try {
             Thread.sleep(3000);
         } catch (Exception e) {

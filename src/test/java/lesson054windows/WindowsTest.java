@@ -35,10 +35,10 @@ public class WindowsTest {
         String mainWindow = driver.getWindowHandle();
         System.out.println(mainWindow);
 
-        WebElement aAgreement = driver.findElement(By.xpath("//a[text()=\"Oracle Binary Code License Agreement for Java SE\"]"));
-        WebElement aBSDLicense = driver.findElement(By.xpath("//a[text()=\"Oracle BSD License.\"]"));
+        WebElement agreement = driver.findElement(By.xpath("//a[text()=\"Oracle Binary Code License Agreement for Java SE\"]"));
+        WebElement bsdLicense = driver.findElement(By.xpath("//a[text()=\"Oracle BSD License.\"]"));
 
-        aAgreement.click();
+        agreement.click();
 //        Set<String> windowHandlesSet = new HashSet<>(); // java.util.Set<java.lang.String> getWindowHandles() Return a LinkedHashSet of window handles which can be used to iterate over all open windows of this WebDriver instance by passing them to switchTo().WebDriver.Options.window()
         Set<String> windowHandlesSet;
         windowHandlesSet = driver.getWindowHandles();
@@ -65,17 +65,17 @@ public class WindowsTest {
         System.out.println(driver.getWindowHandle());
 
         /*Find a Community link at secondary window*/
-        WebElement aCommunityAtSecondaryWindow = driver.findElement(By.xpath("//div[text()=\"Community\"]/parent::a"));
-        actions.click(aCommunityAtSecondaryWindow).build().perform();
+        WebElement communityAtSecondaryWindow = driver.findElement(By.xpath("//div[text()=\"Community\"]/parent::a"));
+        actions.click(communityAtSecondaryWindow).build().perform();
         Assert.assertEquals("Java Community Home", driver.getTitle());
 
         /*Switch back to the mainWindow*/
         driver.switchTo().window(mainWindow);
 
         /*Find a Community link at mainWindow*/
-        WebElement aCommunityAtMainWindow = driver.findElement(By.xpath("//div[text()=\"Community\"]/parent::a"));
-        aCommunityAtMainWindow.click();
-//        actions.click(aBSDLicense).build().perform();
+        WebElement communityAtMainWindow = driver.findElement(By.xpath("//div[text()=\"Community\"]/parent::a"));
+        communityAtMainWindow.click();
+//        actions.click(bsdLicense).build().perform();
         Assert.assertEquals("Java Community Home", driver.getTitle());
     }
 

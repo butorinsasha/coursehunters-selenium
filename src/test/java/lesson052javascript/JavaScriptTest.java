@@ -47,9 +47,8 @@ public class JavaScriptTest {
         jse.executeScript("window.scrollBy(0, -900);");
     }
 
-
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+//        driver.quit();
     }
 }
