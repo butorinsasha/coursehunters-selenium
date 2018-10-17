@@ -58,21 +58,24 @@ public class ActionsTest {
     public void testActionsDragAndDrop() {
         driver.get("https://www.ebay.com/");
 
-        WebElement link1 = driver.findElement(By.xpath("//tr[@role=\"list\"]//a[text()=\"Электроника\"]"));
-        WebElement element1 = driver.findElement(By.xpath("//tr[@role=\"list\"]//a[text()=\"Электроника\"]"));
+        WebElement link = driver.findElement(By.xpath("//ul[@class=\"hl-cat-nav__container\"]//li/a[text()=\"Мода\"]"));
+        WebElement searchField = driver.findElement(By.xpath("//input[@id=\"gh-ac\"]/.."));
 
-        actions.dragAndDrop(element1, link1);
 
-//        actions.clickAndHold(element1).moveToElement(element1).release().build().perform();
-//        Action action = actions.clickAndHold(element1).moveToElement(element1).release().build();
-//        action.perform();
+        Actions acts = actions.clickAndHold(link).moveToElement(searchField).release();
+//        Same as in next line
+//        Actions acts = actions.dragAndDrop(link, searchField);
+        acts.build().perform(); // cant see what expected to see
 
-        actions.doubleClick(element1);
-        actions.contextClick(element1); // right button click
+//        Action act = actions.clickAndHold(link).moveToElement(searchField).release().build();
+//        act.perform(); //doesn't work hmm...
+
+//        actions.doubleClick(searchField);
+//        actions.contextClick(searchField); // right button click
     }
 
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+//        driver.quit();
     }
 }
