@@ -10,13 +10,13 @@ public class StupidValidatorTest {
     @Test
     public void isValidCredsReturnTrueOnValidCreds() {
         StupidValidator sv = new StupidValidator(new HashMap<String, String>());
-        Assert.assertTrue(sv.isValidCreds("butorinsasha", "M4Jokshr75Jjj"));
+        Assert.assertTrue(sv.isRightCreds("butorinsasha", "M4Jokshr75Jjj"));
     }
 
     @Test
     public void isValidCredsReturnFalseOnInvalidCreds() {
         StupidValidator sv = new StupidValidator(new HashMap<String, String>());
-        Assert.assertFalse(sv.isValidCreds("friend", "qweASD123"));
+        Assert.assertFalse(sv.isRightCreds("friend", "qweASD123"));
     }
 
 }

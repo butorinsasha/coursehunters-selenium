@@ -40,7 +40,7 @@ public class LoginPage extends Page {
         this.typePassword(username);
         this.typePassword(password);
 
-        if (new StupidValidator(new HashMap<String, String>()).isValidCreds(username, password)) {
+        if (new StupidValidator(new HashMap<String, String>()).isRightCreds(username, password)) {
             return new Page(driver);
         } else {
             return new LoginPage(driver);
