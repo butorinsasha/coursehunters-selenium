@@ -44,6 +44,7 @@ public class ScreenShotTest {
                     new BufferedWriter(
                             new FileWriter(scrBase64)));
             print.println(base64);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
