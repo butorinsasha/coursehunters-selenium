@@ -2,134 +2,186 @@ package lesson063pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends Page {
     private WebDriver driver;
 
+    /*Constructor*/
     public SignUpPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
-    private By header = By.xpath("//h1");
+    /*By using*/
+//    private By header = By.xpath("//h1");
+//    private By usernameFieldBy = By.xpath("//input[@id=\"user_login\"]");
+//    private By emailFieldBy = By.xpath("//input[@id=\"user_email\"]");
+//    private By passwordFieldBy = By.xpath("//input[@id=\"user_password\"]");
+//    private By signUpButtonBy = By.xpath("//button[@id=\"signup_button\"]");
+//    private By mainErrorBy = By.xpath("//form[@id=\"signup-form\"]//div[@class=\"flash flash-error my-3\"]");
+//    private By usernameErrorBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//dd[@class=\"error\"]");
+//    private By emailErrorBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//dd[@class=\"error\"]");
+//    private By passwordErrorBy = By.xpath("//form[@id=\"signup-form\"]//password-strength//dd[@class=\"error\"]");
+//    private By usernameNoteBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]");
+//    private By emailNoteBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]");
+//    private By passwordNoteBy = By.xpath("//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]");
 
-    private By usernameField = By.xpath("//input[@id=\"user_login\"]");
-    private By emailField = By.xpath("//input[@id=\"user_email\"]");
-    private By passwordField = By.xpath("//input[@id=\"user_password\"]");
+    /*XPATH_CONSTANTS*/
+    public static final String HEADER_XPATH = "//h1";
+    public static final String USERNAME_FIELD_XPATH = "//input[@id=\"user_login\"]";
+    public static final String EMAIL_FIELD_XPATH = "//input[@id=\"user_email\"]";
+    public static final String PASSWORD_FIELD_XPATH = "//input[@id=\"user_password\"]";
+    public static final String SIGN_UP_BUTTON_XPATH = "//button[@id=\"signup_button\"]";
+    public static final String MAIN_ERROR_XPATH = "//form[@id=\"signup-form\"]//div[@class=\"flash flash-error my-3\"]";
+    public static final String USERNAME_ERROR_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//dd[@class=\"error\"]";
+    public static final String EMAIL_ERROR_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//dd[@class=\"error\"]";
+    public static final String PASSWORD_ERROR_XPATH = "//form[@id=\"signup-form\"]//password-strength//dd[@class=\"error\"]";
+    public static final String USERNAME_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]";
+    public static final String EMAIL_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]";
+    public static final String PASSWORD_NOTE_XPATH = "//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]";
 
-    private By signUpButton = By.xpath("//button[@id=\"signup_button\"]");
+    /*WebElements*/
+    @FindBy (xpath = HEADER_XPATH)
+    private WebElement header;
 
-    private By mainError = By.xpath("//form[@id=\"signup-form\"]//div[@class=\"flash flash-error my-3\"]");
-    private By usernameError = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//dd[@class=\"error\"]");
-    private By emailError = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//dd[@class=\"error\"]");
-    private By passwordError = By.xpath("//form[@id=\"signup-form\"]//password-strength//dd[@class=\"error\"]");
+    @FindBy (xpath = USERNAME_FIELD_XPATH)
+    private WebElement usernameField;
 
-    private By usernameNote = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]");
-    private By emailNote = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]");
+    @FindBy (xpath = EMAIL_FIELD_XPATH)
+    private WebElement emailField;
 
-    private By passwordNote = By.xpath("//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]");
+    @FindBy (xpath = PASSWORD_FIELD_XPATH)
+    private WebElement passwordField;
 
-    public By getHeader() {
+    @FindBy (xpath = SIGN_UP_BUTTON_XPATH)
+    private WebElement signUpButton;
+
+    @FindBy (xpath = MAIN_ERROR_XPATH)
+    private WebElement mainError;
+//
+//    @FindBy (xpath = USERNAME_ERROR_XPATH)
+//    private WebElement usernameError;
+//
+//    @FindBy (xpath = EMAIL_ERROR_XPATH)
+//    private WebElement emailError;
+//
+//    @FindBy (xpath = PASSWORD_ERROR_XPATH)
+//    private WebElement passwordError;
+//
+//    @FindBy (xpath = USERNAME_NOTE_XPATH)
+//    private WebElement usernameNote;
+//
+//    @FindBy (xpath = EMAIL_NOTE_XPATH)
+//    private WebElement emailNote;
+//
+//    @FindBy (xpath = PASSWORD_NOTE_XPATH)
+//    private WebElement passwordNote;
+
+    /*Getters*/
+    public WebElement getHeader() {
         return header;
     }
 
-    public By getUsernameField() {
+    public WebElement getUsernameField() {
         return usernameField;
     }
 
-    public By getEmailField() {
+    public WebElement getEmailField() {
         return emailField;
     }
 
-    public By getPasswordField() {
+    public WebElement getPasswordField() {
         return passwordField;
     }
 
-    public By getSignUpButton() {
+    public WebElement getSignUpButton() {
         return signUpButton;
     }
 
-    public By getMainError() {
+    public WebElement getMainError() {
         return mainError;
     }
+//
+//    public WebElement getUsernameError() {
+//        return usernameError;
+//    }
+//
+//    public WebElement getEmailError() {
+//        return emailError;
+//    }
+//
+//    public WebElement getPasswordError() {
+//        return passwordError;
+//    }
+//
+//    public WebElement getUsernameNote() {
+//        return usernameNote;
+//    }
+//
+//    public WebElement getEmailNote() {
+//        return emailNote;
+//    }
+//
+//    public WebElement getPasswordNote() {
+//        return passwordNote;
+//    }
 
-    public By getUsernameError() {
-        return usernameError;
-    }
 
-    public By getEmailError() {
-        return emailError;
-    }
-
-    public By getPasswordError() {
-        return passwordError;
-    }
-
-    public By getUsernameNote() {
-        return usernameNote;
-    }
-
-    public By getEmailNote() {
-        return emailNote;
-    }
-
+    /*Page methods*/
     public SignUpPage typeUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
+        usernameField.sendKeys(username);
         return this;
     }
 
     public SignUpPage typeEmail(String email) {
-        driver.findElement(emailField).sendKeys(email);
+        emailField.sendKeys(email);
         return this;
     }
 
     public SignUpPage typePassword (String password) {
-        driver.findElement(usernameField).sendKeys(password);
+        usernameField.sendKeys(password);
         return this;
-    }
-
-    public By getPasswordNote() {
-        return passwordNote;
     }
 
     public Page register(String username, String email, String password) {
         typeUsername(username);
         typeEmail(email);
         typePassword(password);
-        driver.findElement(signUpButton).click();
+        signUpButton.click();
         return new SignUpPage(driver);
     }
 
     public String getHeaderText() {
-        return driver.findElement(header).getText();
+        return header.getText();
     }
 
     public String getMainErrorText() {
-        return driver.findElement(mainError).getText();
+        return mainError.getText();
     }
-
-    public String getUsernameErrorText() {
-        return driver.findElement(usernameError).getText();
-    }
-
-    public String getUsernameNoteText() {
-        return driver.findElement(usernameNote).getText();
-    }
-
-    public String getEmailErrorText() {
-        return driver.findElement(emailError).getText();
-    }
-
-    public String getEmailNoteText() {
-        return driver.findElement(emailNote).getText();
-    }
-
-    public String getPasswordErrorText() {
-        return driver.findElement(passwordError).getText();
-    }
-
-    public String getPasswordNoteText() {
-        return driver.findElement(passwordNote).getText();
-    }
+//
+//    public String getUsernameErrorText() {
+//        return usernameError.getText();
+//    }
+//
+//    public String getUsernameNoteText() {
+//        return usernameNote.getText();
+//    }
+//
+//    public String getEmailErrorText() {
+//        return emailError.getText();
+//    }
+//
+//    public String getEmailNoteText() {
+//        return emailNote.getText();
+//    }
+//
+//    public String getPasswordErrorText() {
+//        return passwordError.getText();
+//    }
+//
+//    public String getPasswordNoteText() {
+//        return passwordNote.getText();
+//    }
 
 }

@@ -10,7 +10,6 @@ public class LoginPage extends Page {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
     private By loginField = By.xpath("//input[@id=\"login_field\"]");

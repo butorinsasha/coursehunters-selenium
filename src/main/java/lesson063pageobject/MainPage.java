@@ -2,50 +2,107 @@ package lesson063pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends Page {
     private WebDriver driver;
 
+    /*Constructor*/
     public MainPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
     }
 
-    private By signInButton = By.xpath("//a[text()=\"Sign in\"]");
-    private By signUpButton = By.xpath("//a[text()=\"Sign up\"]");
-    private By usernameField = By.xpath("//input[@id=\"user[login]\"]");
-    private By emailField = By.xpath("//input[@id=\"user[email]\"]");
-    private By passwordField = By.xpath("//input[@id=\"user[password]\"]");
-    private By signUpFormButton = By.xpath("//button[text()=\"Sign up for GitHub\"]");
+    /*By using*/
+//    private By signInButtonBy = By.xpath("//a[text()=\"Sign in\"]");
+//    private By signUpButtonBy = By.xpath("//a[text()=\"Sign up\"]");
+//    private By usernameFieldBy = By.xpath("//input[@id=\"user[login]\"]");
+//    private By emailFieldBy = By.xpath("//input[@id=\"user[email]\"]");
+//    private By passwordFieldBy = By.xpath("//input[@id=\"user[password]\"]");
+//    private By signUpFormButtonBy = By.xpath("//button[text()=\"Sign up for GitHub\"]");
 
+    /*XPATH_CONSTANTS*/
+    public static final String SIGN_IN_BUTTON_XPATH = "//a[text()=\"Sign in\"]";
+    public static final String SIGN_UP_BUTTON_XPATH = "//a[text()=\"Sign up\"]";
+    public static final String USERNAME_FIELD_XPATH = "//input[@id=\"user[login]\"]";
+    public static final String EMAIL_FIELD_XPATH = "//input[@id=\"user[email]\"]";
+    public static final String PASSWORD_FIELD_XPATH = "//input[@id=\"user[password]\"]";
+    public static final String SIGN_UP_FORM_BUTTON_XPATH = "//button[text()=\"Sign up for GitHub\"]";
+
+    /*WebElements*/
+    @FindBy(xpath = SIGN_IN_BUTTON_XPATH)
+    private WebElement signInButton;
+
+    @FindBy(xpath = SIGN_UP_BUTTON_XPATH)
+    private WebElement signUpButton;
+
+    @FindBy(xpath = USERNAME_FIELD_XPATH)
+    private WebElement usernameField;
+
+    @FindBy(xpath = EMAIL_FIELD_XPATH)
+    private WebElement emailField;
+
+    @FindBy(xpath = PASSWORD_FIELD_XPATH)
+    private WebElement passwordField;
+
+    @FindBy(xpath = SIGN_UP_FORM_BUTTON_XPATH)
+    private WebElement signUpFormButton;
+
+    /*Getters*/
+    public WebElement getSignInButton() {
+        return signInButton;
+    }
+
+    public WebElement getSignUpButton() {
+        return signUpButton;
+    }
+
+    public WebElement getUsernameField() {
+        return usernameField;
+    }
+
+    public WebElement getEmailField() {
+        return emailField;
+    }
+
+    public WebElement getPasswordField() {
+        return passwordField;
+    }
+
+    public WebElement getSignUpFormButton() {
+        return signUpFormButton;
+    }
+
+
+    /*Page methods*/
     public LoginPage clickSignInButton() {
-        driver.findElement(signInButton).click();
+        signInButton.click();
         return new LoginPage(driver);
     }
 
     public SignUpPage clickSignUpButton() {
-        driver.findElement(signUpButton).click();
-        return new SignUpPage(driver);
-    }
-
-    public SignUpPage clickSignUpFormButton() {
-        driver.findElement(signUpFormButton).click();
+        signUpButton.click();
         return new SignUpPage(driver);
     }
 
     public MainPage typeUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
-        return this;
-    }
-
-    public MainPage typePassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
+        usernameField.sendKeys(username);
         return this;
     }
 
     public MainPage typeEmail(String email) {
-        driver.findElement(emailField).sendKeys(email);
+        emailField.sendKeys(email);
         return this;
+    }
+
+    public MainPage typePassword(String password) {
+        passwordField.sendKeys(password);
+        return this;
+    }
+
+    public SignUpPage clickSignUpFormButton() {
+        signUpFormButton.click();
+        return new SignUpPage(driver);
     }
 
     public SignUpPage register(String username, String email, String password) {
