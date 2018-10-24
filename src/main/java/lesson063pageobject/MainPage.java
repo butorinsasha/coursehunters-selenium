@@ -15,7 +15,7 @@ public class MainPage extends Page {
     private By signUpButton = By.xpath("//a[text()=\"Sign up\"]");
     private By usernameField = By.xpath("//input[@id=\"user[login]\"]");
     private By emailField = By.xpath("//input[@id=\"user[email]\"]");
-    private By passwordField = By.xpath("//input[@id=\"user[password]\"");
+    private By passwordField = By.xpath("//input[@id=\"user[password]\"]");
     private By signUpFormButton = By.xpath("//button[text()=\"Sign up for GitHub\"]");
 
     public LoginPage clickSignInButton() {

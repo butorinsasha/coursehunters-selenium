@@ -1,4 +1,4 @@
 package lesson063pageobject;
 
-public class SignUpPage {
+public class SignUpPageTest {
 }

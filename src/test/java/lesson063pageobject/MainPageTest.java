@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class MainPageTest {
     private WebDriver driver;
 
@@ -19,8 +20,8 @@ public class MainPageTest {
     public void registerAtMainPageWithRightCreds() {
         driver.get("https://github.com/");
         MainPage mainPage = new MainPage(driver);
-        SignUpPage signUpPage = mainPage.register("butorinsasha4", "butorinsasha4@rupayamail.com", "M4Jokshr75Jjj");
-        Assert.assertEquals("Join GitHub · GitHub", signUpPage.getPageURL());
+        SignUpPage signUpPage = mainPage.register("butorinsasha5", "butorinsasha5@rupayamail.com", "M4Jokshr75Jjj");
+        Assert.assertEquals("Join GitHub · GitHub", signUpPage.getPageTitle());
         Assert.assertEquals("https://github.com/join", signUpPage.getPageURL());
     }
 
