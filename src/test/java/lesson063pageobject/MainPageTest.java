@@ -31,12 +31,17 @@ public class MainPageTest {
 
         SignUpPage signUpPage = mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");
 
+        System.out.println(signUpPage.getClass());
+        System.out.println(signUpPage.HEADER_XPATH);
+
 //        mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");
 //        SignUpPage signUpPage = new SignUpPage(driver);
-        System.out.println(signUpPage.getPageTitle());
+
+//        System.out.println(signUpPage.getPageTitle());
+        System.out.println(signUpPage.getHeader());
         System.out.println(signUpPage.getHeader().getTagName());
         System.out.println(signUpPage.getMainError());
-        System.out.println(signUpPage.getMainError().getTagName());
+//        System.out.println(signUpPage.getMainError().getTagName());
 
 //        Assert.assertEquals("Join GitHub · GitHub", signUpPage.getPageTitle());
 //        SignUpPage signUpPage = mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");

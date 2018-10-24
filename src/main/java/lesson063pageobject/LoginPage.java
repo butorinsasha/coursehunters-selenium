@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.HashMap;
 
 public class LoginPage extends Page {
-    private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         super(driver);

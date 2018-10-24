@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SignUpPage extends Page {
-    private WebDriver driver;
 
     /*Constructor*/
     public SignUpPage(WebDriver driver) {
@@ -80,7 +79,7 @@ public class SignUpPage extends Page {
 
     /*Getters*/
     public WebElement getHeader() {
-        return header;
+        return this.header;
     }
 
     public WebElement getUsernameField() {
