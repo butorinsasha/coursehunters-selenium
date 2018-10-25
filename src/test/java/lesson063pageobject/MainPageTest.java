@@ -61,7 +61,7 @@ public class MainPageTest {
     }
 
     @Test
-    public void registrWithBlankFields() {
+    public void registerWithBlankFields() {
         driver.get("https://github.com/");
         MainPage mainPage = new MainPage(driver);
         SignUpPage signUpPage = mainPage.register("", "", "");
@@ -74,6 +74,6 @@ public class MainPageTest {
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }

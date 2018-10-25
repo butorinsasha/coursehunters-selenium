@@ -1,6 +1,5 @@
 package lesson063pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -90,7 +89,7 @@ public class LoginPage extends Page {
         this.typeUsername(username);
         this.typePassword(password);
         this.clickSignInButton();
-        if (new StupidValidator(new HashMap<String, String>()).isRightCreds(username, password)) {
+        if (new StupidCredsChecker(new HashMap<String, String>()).isUsedCreds(username, password)) {
             return new Page(driver);
         } else {
             return new LoginPage(driver);

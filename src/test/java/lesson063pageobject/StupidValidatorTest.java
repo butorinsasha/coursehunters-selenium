@@ -8,15 +8,15 @@ import java.util.HashMap;
 public class StupidValidatorTest {
 
     @Test
-    public void isValidCredsReturnTrueOnValidCreds() {
-        StupidValidator sv = new StupidValidator(new HashMap<String, String>());
-        Assert.assertTrue(sv.isRightCreds("butorinsasha", "M4Jokshr75Jjj"));
+    public void isUsedCredsReturnTrueOnUsedCreds() {
+        StupidCredsChecker sv = new StupidCredsChecker(new HashMap<String, String>());
+        Assert.assertTrue(sv.isUsedCreds("butorinsasha", "M4Jokshr75Jjj"));
     }
 
     @Test
-    public void isValidCredsReturnFalseOnInvalidCreds() {
-        StupidValidator sv = new StupidValidator(new HashMap<String, String>());
-        Assert.assertFalse(sv.isRightCreds("friend", "qweASD123"));
+    public void isUsedCredsReturnFalseOnUnusedCreds() {
+        StupidCredsChecker sv = new StupidCredsChecker(new HashMap<String, String>());
+        Assert.assertFalse(sv.isUsedCreds("friend", "qweASD123"));
     }
 
 }
