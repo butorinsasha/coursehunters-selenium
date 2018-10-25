@@ -1,6 +1,7 @@
 package lesson063pageobject;
 
 import lesson057presenceofelement.WebElementPresenceVerifier;
+import lesson059screenshots.FileName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,75 +12,65 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static lesson063pageobject.SignUpPage.USERNAME_NOTE_XPATH;
-
-
 public class MainPageTest {
     private WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
         driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void registerWithUnusedCreds() {
-        driver.get("https://github.com/");
+        driver.get(MainPage.URL);
         MainPage mainPage = new MainPage(driver);
-        System.out.println(mainPage.getEmailField().getTagName());
 
-        SignUpPage signUpPage = mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");
+        String timestamp = FileName.epochFileName();
+        String username = "username" + timestamp;
+        String email = "username" + timestamp + "@rupayamail.com";
+        String password = "Password"+ timestamp;
 
-        System.out.println(signUpPage.getClass());
-        System.out.println(signUpPage.HEADER_XPATH);
+        System.out.println("username: " + username);
+        System.out.println("email: " + email);
+        System.out.println("password: " + password);
 
-//        mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");
-//        SignUpPage signUpPage = new SignUpPage(driver);
+        SignUpPage signUpPage = mainPage.register(username, email , password);
+        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.SIGNUP_FORM_XPATH)));
 
-//        System.out.println(signUpPage.getPageTitle());
-        System.out.println(signUpPage.getHeader());
-        System.out.println(signUpPage.getHeader().getTagName());
-        System.out.println(signUpPage.getMainError());
-//        System.out.println(signUpPage.getMainError().getTagName());
-
-//        Assert.assertEquals("Join GitHub · GitHub", signUpPage.getPageTitle());
-//        SignUpPage signUpPage = mainPage.register("butorinsasha6", "butorinsasha6@rupayamail.com", "JOer33okokp");
-//        Assert.assertEquals("https://github.com/join", signUpPage.getPageURL());
     }
 
     @Test
     public void registerWithUsedUsername() {
-        driver.get("https://github.com/");
+        driver.get(MainPage.URL);
         MainPage mainPage = new MainPage(driver);
-//        SignUpPage signUpPage = mainPage.register("butorinsasha", "butorinsasha@rupayamail.com", "JOer33okokp");
-        mainPage.register("butorinsasha", "butorinsasha@rupayamail.com", "JOer33okokp");
-        SignUpPage signUpPage = new SignUpPage(driver);
-        System.out.println(signUpPage.getHeaderText());
-        System.out.println(signUpPage.getPageTitle());
-        System.out.println(signUpPage.getHeader().getTagName());
+        SignUpPage signUpPage = mainPage.register("butorinsasha", "butorinsasha@rupayamail.com", "Password299792458");
 
-//        Assert.assertEquals("There were problems creating your account.", signUpPage.getMainErrorText());
-//        Assert.assertTrue(signUpPage.getUsernameErrorText().contains("already taken"));
-//
-//        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(signUpPage.USERNAME_NOTE_XPATH)));
-//        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(signUpPage.PASSWORD_ERROR_XPATH)));
-//
-//        Assert.assertEquals("We’ll occasionally send updates about your account to this inbox. We’ll never share your email address with anyone.", signUpPage.getEmailNoteText());
-//        Assert.assertEquals("Make sure it's more than 15 characters, or at least 7 characters, including a number, and a lowercase letter.", signUpPage.getPasswordNoteText());
+        /*Check a presence of errors*/
+        Assert.assertEquals(SignUpPage.MAIN_ERROR_TEXT, signUpPage.getMainErrorText());
+        Assert.assertEquals(SignUpPage.USERNAME_ALREADY_TAKED_ERROR_TEXT, signUpPage.getUsernameErrorText());
+
+        /*Check an absence of Errors and notes*/
+        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.USERNAME_NOTE_XPATH)));
+        Assert.assertFalse(WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(SignUpPage.EMAIL_ERROR_XPATH)));
+        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.PASSWORD_ERROR_XPATH)));
+
+        /*Check a presence of Notes*/
+        Assert.assertEquals(SignUpPage.EMAIL_BLANK_NOTE_TEXT, signUpPage.getEmailNoteText());
+        Assert.assertEquals(SignUpPage.PASSWORD_BLANK_NOTE_TEXT, signUpPage.getPasswordNoteText());
     }
 
-//    @Test
-//    public void registrWithBlankFields() {
-//        driver.get("https://github.com/");
-//        MainPage mainPage = new MainPage(driver);
-//        SignUpPage signUpPage = mainPage.register("", "", "");
-//
-//        Assert.assertEquals("There were problems creating your account.", signUpPage.getMainErrorText());
-//        Assert.assertTrue(signUpPage.getUsernameErrorText().contains("can't be blank"));
-//        Assert.assertTrue(signUpPage.getEmailErrorText().contains("can't be blank"));
-//        Assert.assertTrue(signUpPage.getPasswordErrorText().contains("Password can't be blank and is too short (minimum is 7 characters)"));
-//    }
+    @Test
+    public void registrWithBlankFields() {
+        driver.get("https://github.com/");
+        MainPage mainPage = new MainPage(driver);
+        SignUpPage signUpPage = mainPage.register("", "", "");
+
+        Assert.assertEquals(SignUpPage.MAIN_ERROR_TEXT, signUpPage.getMainErrorText());
+        Assert.assertEquals(SignUpPage.USERNAME_BLANK_ERROR_TEXT, signUpPage.getUsernameErrorText());
+        Assert.assertEquals(SignUpPage.EMAIL_BLANK_ERROR_TEXT, signUpPage.getEmailErrorText());
+        Assert.assertEquals(SignUpPage.PASSWORD_BLANK_ERROR_TEXT, signUpPage.getPasswordErrorText());
+    }
 
     @After
     public void tearDown() throws Exception {

@@ -12,13 +12,7 @@ public class MainPage extends Page {
         super(driver);
     }
 
-    /*By using*/
-//    private By signInButtonBy = By.xpath("//a[text()=\"Sign in\"]");
-//    private By signUpButtonBy = By.xpath("//a[text()=\"Sign up\"]");
-//    private By usernameFieldBy = By.xpath("//input[@id=\"user[login]\"]");
-//    private By emailFieldBy = By.xpath("//input[@id=\"user[email]\"]");
-//    private By passwordFieldBy = By.xpath("//input[@id=\"user[password]\"]");
-//    private By signUpFormButtonBy = By.xpath("//button[text()=\"Sign up for GitHub\"]");
+    public static final String URL = "https://github.com";
 
     /*XPATH_CONSTANTS*/
     public static final String SIGN_IN_BUTTON_XPATH = "//a[text()=\"Sign in\"]";
@@ -108,7 +102,8 @@ public class MainPage extends Page {
         this.typeUsername(username);
         this.typeEmail(email);
         this.typePassword(password);
-        this.clickSignUpFormButton();
-        return new SignUpPage(driver);
+//        this.clickSignUpFormButton();
+//        return new SignUpPage(driver);
+        return this.clickSignUpFormButton();
     }
 }

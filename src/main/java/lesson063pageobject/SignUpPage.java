@@ -12,22 +12,11 @@ public class SignUpPage extends Page {
         super(driver);
     }
 
-    /*By using*/
-//    private By header = By.xpath("//h1");
-//    private By usernameFieldBy = By.xpath("//input[@id=\"user_login\"]");
-//    private By emailFieldBy = By.xpath("//input[@id=\"user_email\"]");
-//    private By passwordFieldBy = By.xpath("//input[@id=\"user_password\"]");
-//    private By signUpButtonBy = By.xpath("//button[@id=\"signup_button\"]");
-//    private By mainErrorBy = By.xpath("//form[@id=\"signup-form\"]//div[@class=\"flash flash-error my-3\"]");
-//    private By usernameErrorBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//dd[@class=\"error\"]");
-//    private By emailErrorBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//dd[@class=\"error\"]");
-//    private By passwordErrorBy = By.xpath("//form[@id=\"signup-form\"]//password-strength//dd[@class=\"error\"]");
-//    private By usernameNoteBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]");
-//    private By emailNoteBy = By.xpath("//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]");
-//    private By passwordNoteBy = By.xpath("//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]");
+    public static final String URL = "https://github.com/join";
 
     /*XPATH_CONSTANTS*/
     public static final String HEADER_XPATH = "//h1";
+    public static final String SIGNUP_FORM_XPATH = "//form[@id=\"signup-form\"]";
     public static final String USERNAME_FIELD_XPATH = "//input[@id=\"user_login\"]";
     public static final String EMAIL_FIELD_XPATH = "//input[@id=\"user_email\"]";
     public static final String PASSWORD_FIELD_XPATH = "//input[@id=\"user_password\"]";
@@ -39,6 +28,40 @@ public class SignUpPage extends Page {
     public static final String USERNAME_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]";
     public static final String EMAIL_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]";
     public static final String PASSWORD_NOTE_XPATH = "//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]";
+
+
+    /*Error texts*/
+    public static final String MAIN_ERROR_TEXT = "There were problems creating your account.";
+
+    public static final String USERNAME_BLANK_ERROR_TEXT = "Login can't be blank";
+    public static final String USERNAME_RESERVED_WORD_ERROR_TEXT = "Login name 'username' is a reserved word";
+    public static final String USERNAME_ALREADY_TAKED_ERROR_TEXT = "Login is already taken";
+    public static final String USERNAME_INVALID_ERROR_TEXT = "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen";
+    public static final String USERNAME_TOO_LONG_ERROR_TEXT = "Login is too long (maximum is 39 characters)";
+
+    public static final String EMAIL_BLANK_ERROR_TEXT = "Email can't be blank";
+    public static final String EMAIL_ALREADY_TAKEN_ERROR_TEXT = "Email is invalid or already taken";
+    public static final String EMAIL_INVALID_ERROR_TEXT = "Email is invalid or already taken";
+
+    public static final String PASSWORD_BLANK_ERROR_TEXT = "Password can't be blank and is too short (minimum is 7 characters)";
+    public static final String PASSWORD_TOO_SHORT_ERROR_TEXT = "Password is too short (minimum is 7 characters)";
+    public static final String PASSWORD_TOO_LONG_ERROR_TEXT = "Password is too long (maximum is 72 characters)";
+
+
+    /*Note texts*/
+    public static final String USERNAME_BLANK_NOTE_TEXT = "This will be your username. You can add the name of your organization later.";
+    public static final String USERNAME_ALREADY_TAKEN_NOTE_TEXT = "Username is already taken";
+    public static final String USERNAME_RESERVED_WORD_NOTE_TEXT = "Username name 'username' is a reserved word";
+    public static final String USERNAME_INVALID_NOTE_TEXT = "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen";
+
+    public static final String EMAIL_BLANK_NOTE_TEXT = "We’ll occasionally send updates about your account to this inbox. We’ll never share your email address with anyone.";
+    public static final String EMAIL_ALREADY_TAKEN_NOTE_TEXT = "Email is invalid or already taken";
+    public static final String EMAIL_INVALID_NOTE_TEXT = "Email is invalid or already taken";
+
+    public static final String PASSWORD_BLANK_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, including a number, and a lowercase letter.";
+    public static final String PASSWORD_TOO_SHORT_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, and including a number.";
+    public static final String PASSWORD_TOO_LONG_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, and including a number.";
+
 
     /*WebElements*/
     @FindBy (xpath = HEADER_XPATH)
@@ -58,24 +81,25 @@ public class SignUpPage extends Page {
 
     @FindBy (xpath = MAIN_ERROR_XPATH)
     private WebElement mainError;
-//
-//    @FindBy (xpath = USERNAME_ERROR_XPATH)
-//    private WebElement usernameError;
-//
-//    @FindBy (xpath = EMAIL_ERROR_XPATH)
-//    private WebElement emailError;
-//
-//    @FindBy (xpath = PASSWORD_ERROR_XPATH)
-//    private WebElement passwordError;
-//
-//    @FindBy (xpath = USERNAME_NOTE_XPATH)
-//    private WebElement usernameNote;
-//
-//    @FindBy (xpath = EMAIL_NOTE_XPATH)
-//    private WebElement emailNote;
-//
-//    @FindBy (xpath = PASSWORD_NOTE_XPATH)
-//    private WebElement passwordNote;
+
+    @FindBy (xpath = USERNAME_ERROR_XPATH)
+    private WebElement usernameError;
+
+    @FindBy (xpath = EMAIL_ERROR_XPATH)
+    private WebElement emailError;
+
+    @FindBy (xpath = PASSWORD_ERROR_XPATH)
+    private WebElement passwordError;
+
+    @FindBy (xpath = USERNAME_NOTE_XPATH)
+    private WebElement usernameNote;
+
+    @FindBy (xpath = EMAIL_NOTE_XPATH)
+    private WebElement emailNote;
+
+    @FindBy (xpath = PASSWORD_NOTE_XPATH)
+    private WebElement passwordNote;
+
 
     /*Getters*/
     public WebElement getHeader() {
@@ -101,30 +125,30 @@ public class SignUpPage extends Page {
     public WebElement getMainError() {
         return mainError;
     }
-//
-//    public WebElement getUsernameError() {
-//        return usernameError;
-//    }
-//
-//    public WebElement getEmailError() {
-//        return emailError;
-//    }
-//
-//    public WebElement getPasswordError() {
-//        return passwordError;
-//    }
-//
-//    public WebElement getUsernameNote() {
-//        return usernameNote;
-//    }
-//
-//    public WebElement getEmailNote() {
-//        return emailNote;
-//    }
-//
-//    public WebElement getPasswordNote() {
-//        return passwordNote;
-//    }
+
+    public WebElement getUsernameError() {
+        return usernameError;
+    }
+
+    public WebElement getEmailError() {
+        return emailError;
+    }
+
+    public WebElement getPasswordError() {
+        return passwordError;
+    }
+
+    public WebElement getUsernameNote() {
+        return usernameNote;
+    }
+
+    public WebElement getEmailNote() {
+        return emailNote;
+    }
+
+    public WebElement getPasswordNote() {
+        return passwordNote;
+    }
 
 
     /*Page methods*/
@@ -158,29 +182,29 @@ public class SignUpPage extends Page {
     public String getMainErrorText() {
         return mainError.getText();
     }
-//
-//    public String getUsernameErrorText() {
-//        return usernameError.getText();
-//    }
-//
-//    public String getUsernameNoteText() {
-//        return usernameNote.getText();
-//    }
-//
-//    public String getEmailErrorText() {
-//        return emailError.getText();
-//    }
-//
-//    public String getEmailNoteText() {
-//        return emailNote.getText();
-//    }
-//
-//    public String getPasswordErrorText() {
-//        return passwordError.getText();
-//    }
-//
-//    public String getPasswordNoteText() {
-//        return passwordNote.getText();
-//    }
+
+    public String getUsernameErrorText() {
+        return usernameError.getText();
+    }
+
+    public String getUsernameNoteText() {
+        return usernameNote.getText();
+    }
+
+    public String getEmailErrorText() {
+        return emailError.getText();
+    }
+
+    public String getEmailNoteText() {
+        return emailNote.getText();
+    }
+
+    public String getPasswordErrorText() {
+        return passwordError.getText();
+    }
+
+    public String getPasswordNoteText() {
+        return passwordNote.getText();
+    }
 
 }

@@ -2,6 +2,8 @@ package lesson063pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
 
@@ -11,26 +13,47 @@ public class LoginPage extends Page {
         super(driver);
     }
 
-    private By loginField = By.xpath("//input[@id=\"login_field\"]");
-    private By passwordField = By.xpath("//input[@id=\"password\"]");
-    private By signInButton = By.xpath("//input[@type=\"submit\"]");
-    private By header = By.xpath("//h1[text()=\"Sign in to GitHub\"]");
-    private By error = By.xpath("//div[@id=\"js-flash-container\"]//div[@class=\"container\"]");
-    private By createAccountLink = By.xpath("//a[text()=\"Create an account\"]");
 
+    /*Constants*/
+    public static final String LOGIN_FIELD_XPATH = "//input[@id=\"login_field\"]";
+    public static final String PASSWORD_FIELD_XPATH = "//input[@id=\"password\"]";
+    public static final String SIGN_IN_BUTTON_XPATH = "//input[@type=\"submit\"]";
+    public static final String HEADER_XPATH = "//h1[text()=\"Sign in to GitHub\"]";
+    public static final String MAIN_ERROR_XPATH = "//div[@id=\"js-flash-container\"]//div[@class=\"container\"]";
+    public static final String CREATE_ACCOUNT_LINK_XPATH = "//a[text()=\"Create an account\"]";
 
+    /*WebElements*/
+    @FindBy(xpath = "LOGIN_FIELD_XPATH")
+    private WebElement loginField;
+
+    @FindBy(xpath = "PASSWORD_FIELD_XPATH")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "SIGN_IN_BUTTON_XPATH")
+    private WebElement signInButton;
+
+    @FindBy(xpath = "HEADER_XPATH")
+    private WebElement header;
+
+    @FindBy(xpath = "ERROR_XPATH")
+    private WebElement mainError;
+
+    @FindBy(xpath = "CREATE_ACCOUNT_LINK_XPATH")
+    private WebElement createAccountLink;
+
+    /*Methods*/
     public LoginPage typeUsername(String username) {
-        driver.findElement(loginField).sendKeys(username);
+        loginField.sendKeys(username);
         return this;
     }
 
     public LoginPage typePassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
+        passwordField.sendKeys(password);
         return this;
     }
 
     public LoginPage clickSignInButton(){
-        driver.findElement(By.xpath("signInButton")).click();
+        signInButton.click();
         return new LoginPage(driver);
     }
 
@@ -46,15 +69,15 @@ public class LoginPage extends Page {
     }
 
     public String getHeaderText() {
-        return driver.findElement(header).getText();
+        return header.getText();
     }
 
     public String getErrorText() {
-        return driver.findElement(error).getText();
+        return mainError.getText();
     }
 
     public SignUpPage createAccountClick() {
-        driver.findElement(createAccountLink).click();
+        createAccountLink.click();
         return new SignUpPage(driver);
     }
 
