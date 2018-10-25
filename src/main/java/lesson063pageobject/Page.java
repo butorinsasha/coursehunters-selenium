@@ -6,11 +6,13 @@ import org.openqa.selenium.support.PageFactory;
 public class Page {
     protected WebDriver driver;
 
+    /*Constructed*/
     public Page(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
+    /*Methods*/
     public String getPageTitle() {
         return driver.getTitle();
     }

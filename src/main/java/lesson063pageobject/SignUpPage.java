@@ -14,7 +14,7 @@ public class SignUpPage extends Page {
 
     public static final String URL = "https://github.com/join";
 
-    /*XPATH_CONSTANTS*/
+    /*Xpath constants*/
     public static final String HEADER_XPATH = "//h1";
     public static final String SIGNUP_FORM_XPATH = "//form[@id=\"signup-form\"]";
     public static final String USERNAME_FIELD_XPATH = "//input[@id=\"user_login\"]";
