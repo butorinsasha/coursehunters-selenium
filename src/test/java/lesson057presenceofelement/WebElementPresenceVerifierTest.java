@@ -44,11 +44,11 @@ public class    WebElementPresenceVerifierTest {
 
         boolean isPresent;
 
-        isPresent = WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(signInXpath));
+        isPresent = ElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(signInXpath));
         System.out.println(isPresent);
         Assert.assertTrue(isPresent);
 
-        isPresent =  WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(logInXpath));
+        isPresent =  ElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(logInXpath));
         System.out.println(isPresent);
         Assert.assertFalse(isPresent);
 
@@ -64,11 +64,11 @@ public class    WebElementPresenceVerifierTest {
 
         boolean isPresent;
 
-        isPresent = WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(signInXpath));
+        isPresent = ElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(signInXpath));
         System.out.println(isPresent);
         Assert.assertTrue(isPresent);
 
-        isPresent =  WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(logInXpath));
+        isPresent =  ElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(logInXpath));
         System.out.println(isPresent);
         Assert.assertFalse(isPresent);
     }
@@ -82,11 +82,11 @@ public class    WebElementPresenceVerifierTest {
 
         boolean isPresent;
 
-        isPresent = WebElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver,wait, By.xpath(signInXpath));
+        isPresent = ElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver,wait, By.xpath(signInXpath));
         System.out.println(isPresent);
         Assert.assertTrue(isPresent);
 
-        isPresent =  WebElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver, wait, By.xpath(logInXpath));
+        isPresent =  ElementPresenceVerifier.isPresentByPresenceOfElementLocated(driver, wait, By.xpath(logInXpath));
         System.out.println(isPresent);
         Assert.assertFalse(isPresent);
     }

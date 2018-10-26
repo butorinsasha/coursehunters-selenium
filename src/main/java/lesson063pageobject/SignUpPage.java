@@ -1,6 +1,5 @@
 package lesson063pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,7 +24,7 @@ public class SignUpPage extends Page {
     public static final String USERNAME_ERROR_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//dd[@class=\"error\"]";
     public static final String EMAIL_ERROR_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//dd[@class=\"error\"]";
     public static final String PASSWORD_ERROR_XPATH = "//form[@id=\"signup-form\"]//password-strength//dd[@class=\"error\"]";
-    public static final String USERNAME_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/usernameemail\"]//p[@class=\"note\"]";
+    public static final String USERNAME_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/username\"]//p[@class=\"note\"]";
     public static final String EMAIL_NOTE_XPATH = "//form[@id=\"signup-form\"]//auto-check[@src=\"/signup_check/email\"]//p[@class=\"note\"]";
     public static final String PASSWORD_NOTE_XPATH = "//form[@id=\"signup-form\"]//password-strength//p[@class=\"note\"]";
 
@@ -54,11 +53,12 @@ public class SignUpPage extends Page {
     public static final String USERNAME_RESERVED_WORD_NOTE_TEXT = "Username name 'username' is a reserved word";
     public static final String USERNAME_INVALID_NOTE_TEXT = "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen";
 
-    public static final String EMAIL_BLANK_NOTE_TEXT = "We’ll occasionally send updates about your account to this inbox. We’ll never share your email address with anyone.";
+    public static final String EMAIL_STANDART_NOTE_TEXT = "We’ll occasionally send updates about your account to this inbox. We’ll never share your email address with anyone.";
     public static final String EMAIL_ALREADY_TAKEN_NOTE_TEXT = "Email is invalid or already taken";
     public static final String EMAIL_INVALID_NOTE_TEXT = "Email is invalid or already taken";
 
-    public static final String PASSWORD_BLANK_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, including a number, and a lowercase letter.";
+    public static final String PASSWORD_STANDART_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, including a number, and a lowercase letter.";
+    public static final String PASSWORD_TYPED_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, and including a number.";
     public static final String PASSWORD_TOO_SHORT_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, and including a number.";
     public static final String PASSWORD_TOO_LONG_NOTE_TEXT = "Make sure it's more than 15 characters, or at least 7 characters, and including a number.";
 
@@ -99,6 +99,7 @@ public class SignUpPage extends Page {
 
     @FindBy (xpath = PASSWORD_NOTE_XPATH)
     private WebElement passwordNote;
+
 
 
     /*Getters*/
@@ -152,27 +153,36 @@ public class SignUpPage extends Page {
 
 
     /*Page methods*/
-    public SignUpPage typeUsername(String username) {
+    public SignUpPage typeUsername(String username) throws InterruptedException {
         usernameField.sendKeys(username);
-        return this;
+        Thread.sleep(1000);
+        return new SignUpPage(driver);
     }
 
-    public SignUpPage typeEmail(String email) {
+    public SignUpPage typeEmail(String email) throws InterruptedException {
         emailField.sendKeys(email);
-        return this;
+        Thread.sleep(1000);
+        return new SignUpPage(driver);
     }
 
-    public SignUpPage typePassword (String password) {
-        usernameField.sendKeys(password);
-        return this;
+    public SignUpPage typePassword (String password) throws InterruptedException {
+        passwordField.sendKeys(password);
+        Thread.sleep(1000);
+        return new SignUpPage(driver);
     }
 
-    public Page register(String username, String email, String password) {
+    public SignUpPage clickSignUpFormButton() throws InterruptedException {
+        signUpButton.click();
+        Thread.sleep(1000);
+        return new SignUpPage(driver);
+    }
+
+    public void register(String username, String email, String password) throws ElementDisabledException, InterruptedException {
         typeUsername(username);
         typeEmail(email);
         typePassword(password);
-        signUpButton.click();
-        return new SignUpPage(driver);
+        clickButton(signUpButton);
+        new SignUpPage(driver);
     }
 
     public String getHeaderText() {

@@ -1,6 +1,6 @@
 package lesson063pageobject;
 
-import lesson057presenceofelement.WebElementPresenceVerifier;
+import lesson057presenceofelement.ElementPresenceVerifier;
 import lesson059screenshots.FileName;
 import org.junit.After;
 import org.junit.Assert;
@@ -18,11 +18,12 @@ public class MainPageTest {
     @Before
     public void setUp() throws Exception {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void registerWithUnusedCreds() {
+    public void registerWithUnusedCreds() throws ElementDisabledException, InterruptedException {
         driver.get(MainPage.URL);
         MainPage mainPage = new MainPage(driver);
 
@@ -36,12 +37,12 @@ public class MainPageTest {
         System.out.println("password: " + password);
 
         SignUpPage signUpPage = mainPage.register(username, email , password);
-        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.SIGNUP_FORM_XPATH)));
+        Assert.assertFalse(ElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.SIGNUP_FORM_XPATH)));
 
     }
 
     @Test
-    public void registerWithUsedUsername() {
+    public void registerWithUsedUsername() throws ElementDisabledException, InterruptedException {
         driver.get(MainPage.URL);
         MainPage mainPage = new MainPage(driver);
         SignUpPage signUpPage = mainPage.register("butorinsasha", "butorinsasha@rupayamail.com", "Password299792458");
@@ -51,17 +52,17 @@ public class MainPageTest {
         Assert.assertEquals(SignUpPage.USERNAME_ALREADY_TAKED_ERROR_TEXT, signUpPage.getUsernameErrorText());
 
         /*Check an absence of Errors and notes*/
-        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.USERNAME_NOTE_XPATH)));
-        Assert.assertFalse(WebElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(SignUpPage.EMAIL_ERROR_XPATH)));
-        Assert.assertFalse(WebElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.PASSWORD_ERROR_XPATH)));
+        Assert.assertFalse(ElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.USERNAME_NOTE_XPATH)));
+        Assert.assertFalse(ElementPresenceVerifier.isPresentByNoSuchElementExceptionHandling(driver, By.xpath(SignUpPage.EMAIL_ERROR_XPATH)));
+        Assert.assertFalse(ElementPresenceVerifier.isPresentByFindElementsSizeListIsGreaterThanZero(driver, By.xpath(SignUpPage.PASSWORD_ERROR_XPATH)));
 
         /*Check a presence of Notes*/
-        Assert.assertEquals(SignUpPage.EMAIL_BLANK_NOTE_TEXT, signUpPage.getEmailNoteText());
-        Assert.assertEquals(SignUpPage.PASSWORD_BLANK_NOTE_TEXT, signUpPage.getPasswordNoteText());
+        Assert.assertEquals(SignUpPage.EMAIL_STANDART_NOTE_TEXT, signUpPage.getEmailNoteText());
+        Assert.assertEquals(SignUpPage.PASSWORD_STANDART_NOTE_TEXT, signUpPage.getPasswordNoteText());
     }
 
     @Test
-    public void registerWithBlankFields() {
+    public void registerWithBlankFields() throws ElementDisabledException, InterruptedException {
         driver.get("https://github.com/");
         MainPage mainPage = new MainPage(driver);
         SignUpPage signUpPage = mainPage.register("", "", "");

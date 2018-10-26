@@ -1,6 +1,5 @@
 package lesson063pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -78,32 +77,37 @@ public class MainPage extends Page {
         return new SignUpPage(driver);
     }
 
-    public MainPage typeUsername(String username) {
+    public MainPage typeUsername(String username) throws InterruptedException {
         usernameField.sendKeys(username);
+        Thread.sleep(1000);
         return this;
     }
 
-    public MainPage typeEmail(String email) {
+    public MainPage typeEmail(String email) throws InterruptedException {
         emailField.sendKeys(email);
+        Thread.sleep(1000);
         return this;
     }
 
-    public MainPage typePassword(String password) {
+    public MainPage typePassword(String password) throws InterruptedException {
         passwordField.sendKeys(password);
+        Thread.sleep(1000);
         return this;
     }
 
-    public SignUpPage clickSignUpFormButton() {
+    public SignUpPage clickSignUpFormButton() throws InterruptedException {
         signUpFormButton.click();
+        Thread.sleep(1000);
         return new SignUpPage(driver);
     }
 
-    public SignUpPage register(String username, String email, String password) {
+    public SignUpPage register(String username, String email, String password) throws ElementDisabledException, InterruptedException {
         this.typeUsername(username);
         this.typeEmail(email);
         this.typePassword(password);
 //        this.clickSignUpFormButton();
-//        return new SignUpPage(driver);
-        return this.clickSignUpFormButton();
+        this.clickButton(signUpFormButton);
+        return new SignUpPage(driver);
+//        return this.clickSignUpFormButton();
     }
 }

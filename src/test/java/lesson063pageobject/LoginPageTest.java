@@ -15,6 +15,7 @@ public class LoginPageTest {
     @Before
     public void setUp() throws Exception {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
