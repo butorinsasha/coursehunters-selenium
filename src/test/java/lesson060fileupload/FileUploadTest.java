@@ -34,7 +34,13 @@ public class FileUploadTest {
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type=\"file\"]")));
         WebElement uploadFileButton = driver.findElement(By.xpath("//input[@type=\"file\"]"));
-        uploadFileButton.sendKeys("C:\\Users\\butorin\\Documents\\work\\qa\\coursehunters-selenium\\src\\main\\resources\\lesson060fileupload");
+
+        /*Windows*/
+//        uploadFileButton.sendKeys("C:\\Users\\butorin\\Documents\\work\\qa\\coursehunters-selenium\\src\\main\\resources\\lesson060fileupload\\screenshot.png");
+
+        /*Linux*/
+        uploadFileButton.sendKeys("/media/sasha/DATA/sasha/work/qa/coursehunters-selenium/src/main/resources/lesson060fileupload/screenshot.png");
+
 
         try {
             Thread.sleep(5000);
@@ -46,6 +52,6 @@ public class FileUploadTest {
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WebElementPresenceVerifier {
+public class ElementPresenceVerifier {
 //    boolean isPresent;
 //    String xPath;
 

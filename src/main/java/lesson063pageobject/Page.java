@@ -1,16 +1,19 @@
 package lesson063pageobject;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 public class Page {
-    private WebDriver driver;
+    protected WebDriver driver;
 
-    public Page() {}
-
+    /*Constructer*/
     public Page(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
+    /*Methods*/
     public String getPageTitle() {
         return driver.getTitle();
     }
@@ -22,4 +25,14 @@ public class Page {
     public String getWindowHandle() {
         return driver.getWindowHandle();
     }
+
+    public Page clickButton (WebElement button) throws ElementDisabledException {
+        if (button.isEnabled()) {
+            button.click();
+            return new Page(driver);
+        } else {
+            throw new ElementDisabledException("Button is disabled");
+        }
+    }
+
 }
