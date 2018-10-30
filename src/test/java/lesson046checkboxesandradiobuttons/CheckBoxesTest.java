@@ -69,13 +69,13 @@ public class CheckBoxesTest {
         WebElement checkBox1 = driver.findElement(By.xpath("//*[@id=\"container\"]/section/ul[10]/li[1]/input"));
         Assert.assertFalse(checkBox1.isSelected());
         checkBox1.click();
-        Assert.assertFalse(checkBox1.isSelected());
-        if (checkBox1.isSelected()) checkBox1.click();
-        Assert.assertFalse(checkBox1.isSelected());
+        Assert.assertTrue(checkBox1.isSelected());
+        if (!checkBox1.isSelected()) checkBox1.click();
+        Assert.assertTrue(checkBox1.isSelected());
     }
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }

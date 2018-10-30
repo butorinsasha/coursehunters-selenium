@@ -36,12 +36,12 @@ public class ActionsTest {
     public void testActionsMoveToElement() throws InterruptedException {
         driver.get("https://www.ebay.com/");
 
-        WebElement link1 = driver.findElement(By.xpath("//tr[@role=\"list\"]//a[text()=\"Электроника\"]"));
-        WebElement link2 = driver.findElement(By.xpath("//a[@title=\"Электроника - iPhone\"]"));
+        WebElement link1 = driver.findElement(By.xpath("//div[@id=\"mainContent\"]//div[@class=\"hl-cat-nav\"]//a[text()=\"Электроника\"]"));
+        WebElement link2 = driver.findElement(By.xpath("//a[text()=\"iPhone\"]"));
 
 
         actions.moveToElement(link1).build().perform();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title=\"Электроника - iPhone\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()=\"iPhone\"]")));
 
 //        Thread.sleep(1000);
 
@@ -76,6 +76,6 @@ public class ActionsTest {
 
     @After
     public void tearDown() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }
