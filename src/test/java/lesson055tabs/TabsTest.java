@@ -85,6 +85,6 @@ public class TabsTest {
 
     @After
     public void setUp() throws Exception {
-//        driver.quit();
+        driver.quit();
     }
 }
